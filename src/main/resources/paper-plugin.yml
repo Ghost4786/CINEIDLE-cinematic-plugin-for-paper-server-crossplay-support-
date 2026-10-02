@@ -1,0 +1,17 @@
+name: CineIdle
+version: 1.0.0
+main: com.solt.cinematicafk.CineIdle
+description: Modern CineIdle AFK for Paper 1.21+
+authors: [GHOST4786]
+api-version: '1.21'
+dependencies:
+  server:
+    ProtocolLib:
+      load: BEFORE
+      required: true
+    floodgate:
+      load: BEFORE
+      required: false
+    Geyser-Spigot:
+      load: BEFORE
+      required: false

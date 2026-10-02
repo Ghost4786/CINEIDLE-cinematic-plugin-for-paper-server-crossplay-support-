@@ -1,0 +1,17 @@
+# ==========================================
+# CineIdle Configuration
+# Developed by GHOST4786
+# ==========================================
+
+# How long a player must be inactive before the cinematic starts (in seconds)
+# Default: 300 (5 minutes)
+afk-trigger-time-seconds: 300
+
+# How far away the camera should orbit from the player
+# Increase this value to make the camera zoom out further
+# Default: 1.0
+camera-distance-multiplier: 1.0
+
+# How long each cinematic camera shot should last before switching to the next angle (in ticks)
+# 20 ticks = 1 second. Default: 1600 (80 seconds)
+transition-speed-ticks: 1600
