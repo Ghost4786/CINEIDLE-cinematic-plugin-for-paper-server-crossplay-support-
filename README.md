@@ -76,3 +76,13 @@ A player can exit the cinematic AFK state at any time by performing *any* of the
 * Swapping items (F), dropping items (Q), or switching hotbar slots (Scroll).
 * Left-clicking or Right-clicking.
 * Typing in chat.
+
+---
+
+## License & Copyright
+
+**© 2026 GHOST4786. All Rights Reserved.**
+
+This project is **CLOSED SOURCE**. Although the repository is public for portfolio and display purposes, you are **strictly prohibited** from copying, modifying, distributing, or using this source code on any server without explicit written permission from GHOST4786.
+
+See the [LICENSE](LICENSE) file for more details.
