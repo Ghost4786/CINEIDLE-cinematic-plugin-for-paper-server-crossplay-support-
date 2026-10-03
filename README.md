@@ -72,7 +72,7 @@ transition-speed-ticks: 1600
 ### Waking Up
 A player can exit the cinematic AFK state at any time by performing *any* of the following physical actions:
 * Moving the mouse or using WASD.
-* Pressing Shift (Sneak).
+* Pressing Shift (Sneak).(for JAVA)
 * Swapping items (F), dropping items (Q), or switching hotbar slots (Scroll).
 * Left-clicking or Right-clicking.
 * Typing in chat.
@@ -81,7 +81,7 @@ A player can exit the cinematic AFK state at any time by performing *any* of the
 
 ## License & Copyright
 
-**© 2026 GHOST4786. All Rights Reserved.**
+**Â© 2026 GHOST4786. All Rights Reserved.**
 
 This project is **CLOSED SOURCE**. Although the repository is public for portfolio and display purposes, you are **strictly prohibited** from copying, modifying, distributing, or using this source code on any server without explicit written permission from GHOST4786.
 
