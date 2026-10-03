@@ -112,28 +112,12 @@ public class AFKManager implements Listener {
     public void onMove(PlayerMoveEvent e) {
         if (!afkPlayers.contains(e.getPlayer().getUniqueId())) return;
         
+        Location from = e.getFrom();
         Location to = e.getTo();
         
-        // Java cinematic ping compensation
-        if (com.solt.cinematicafk.camera.JavaCameraAdapter.locationHistory.containsKey(e.getPlayer().getUniqueId())) {
-            java.util.List<Location> history = com.solt.cinematicafk.camera.JavaCameraAdapter.locationHistory.get(e.getPlayer().getUniqueId());
-            boolean isEcho = false;
-            for (Location histLoc : history) {
-                // Minecraft clients echo the EXACT double/float values sent by the server teleport.
-                // We can use an ultra-tight tolerance. Any deviation means human input.
-                if (histLoc.getWorld() == to.getWorld() && histLoc.distanceSquared(to) < 0.0000001) { 
-                    float dYaw = Math.abs(histLoc.getYaw() - to.getYaw());
-                    while (dYaw > 180.0f) dYaw -= 360.0f;
-                    float dPitch = Math.abs(histLoc.getPitch() - to.getPitch());
-                    if (Math.abs(dYaw) < 0.05f && dPitch < 0.05f) {
-                        isEcho = true;
-                        break;
-                    }
-                }
-            }
-            if (isEcho) {
-                return; // Ignore this move event, it's just ping latency echoing the cinematic
-            }
+        // Ignore rotation-only movements (like looking around while AFK)
+        if (from.getX() == to.getX() && from.getY() == to.getY() && from.getZ() == to.getZ()) {
+            return;
         }
         
         updateActivity(e.getPlayer());

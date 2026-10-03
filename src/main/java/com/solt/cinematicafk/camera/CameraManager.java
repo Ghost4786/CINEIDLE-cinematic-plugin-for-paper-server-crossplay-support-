@@ -38,12 +38,14 @@ public class CameraManager {
         CinematicSession session = new CinematicSession(plugin, player, isBedrock, entityId);
         sessions.put(player.getUniqueId(), session);
         
-        // Bedrock Physics Anchor Fix (Prevents falling through geometry)
-        Location anchor = player.getLocation();
-        anchor.setY(anchor.getBlockY() + 0.1);
-        player.teleport(anchor);
-        player.setAllowFlight(true);
-        player.setFlying(true);
+        if (isBedrock) {
+            // Bedrock Physics Anchor Fix (Prevents falling through geometry)
+            Location anchor = player.getLocation();
+            anchor.setY(anchor.getBlockY() + 0.1);
+            player.teleport(anchor);
+            player.setAllowFlight(true);
+            player.setFlying(true);
+        }
 
         double distMult = plugin.getConfigManager().getCameraDistanceMultiplier();
         Location startLoc = session.getCurrentShot().getCameraLocation(session.getOriginLoc(), session.getOriginEyeLoc(), 0.0, distMult);
@@ -58,8 +60,11 @@ public class CameraManager {
     public void stopCinematic(Player player) {
         CinematicSession session = sessions.remove(player.getUniqueId());
         if (session != null) {
-            player.setAllowFlight(session.getOriginalAllowFlight());
-            player.setFlying(session.getOriginalFlying());
+            if (session.isBedrock()) {
+                player.setAllowFlight(session.getOriginalAllowFlight());
+                player.setFlying(session.getOriginalFlying());
+                player.teleport(session.getOriginLoc()); // Force position update for Bedrock client
+            }
             
             if (!session.isBedrock()) {
                 JavaCameraAdapter.stopCamera(player, session);
